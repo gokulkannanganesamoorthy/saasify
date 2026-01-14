@@ -1,144 +1,73 @@
-import { Link } from 'react-router-dom';
 import { Twitter, Linkedin, Github } from 'lucide-react';
 
 export function Footer() {
   return (
-    <footer className="bg-black text-white py-24 border-t border-white/10 relative overflow-hidden">
-      {/* Giant Text Background */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden select-none pointer-events-none opacity-[0.03]">
-        <h1 className="text-[20vw] font-bold leading-none text-white whitespace-nowrap">
-          SAASIFY
-        </h1>
+    <footer className="bg-black relative overflow-hidden py-12 border-t border-white/10">
+      {/* Fancy Gradient Top Line */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-blue-500 to-transparent blur-[2px]" />
+
+      {/* Ambient Glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-24 bg-blue-500/10 blur-[100px] pointer-events-none" />
+
+      <div className="max-w-5xl mx-auto px-4 relative z-10 flex flex-col md:flex-row justify-between items-center gap-8">
+        {/* Brand Area */}
+        <div className="flex flex-col items-center md:items-start">
+          <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-500">
+            SaaSify
+          </h2>
+          <p className="text-sm text-zinc-500 mt-2 text-center md:text-left">
+            Building the future, one pixel at a time.
+          </p>
+        </div>
+
+        {/* Compact Links */}
+        <div className="flex gap-8 text-sm text-zinc-400 font-medium">
+          {['Product', 'Company', 'Resources'].map((item) => (
+            <a
+              key={item}
+              href="#"
+              className="hover:text-white transition-colors hover:scale-105 transform inline-block"
+            >
+              {item}
+            </a>
+          ))}
+        </div>
+
+        {/* Socials */}
+        <div className="flex gap-4">
+          {[Twitter, Linkedin, Github].map((Icon, i) => (
+            <a
+              key={i}
+              href="#"
+              className="p-2 rounded-lg bg-zinc-900 border border-white/5 text-zinc-400 hover:text-white hover:bg-zinc-800 hover:border-white/20 transition-all hover:-translate-y-1 shadow-lg shadow-black/50"
+            >
+              <Icon className="w-4 h-4" />
+            </a>
+          ))}
+        </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-24">
-          <div>
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              Ready to transform your workflow?
-            </h2>
-            <button className="text-xl md:text-2xl font-medium border-b border-white hover:text-zinc-400 hover:border-zinc-400 transition-colors pb-1">
-              Book a demo now
-            </button>
-          </div>
-          <div className="flex flex-col justify-end items-start md:items-end">
-            <div className="flex gap-4 mb-6">
-              <a
-                href="#"
-                className="p-3 rounded-full bg-white/5 hover:bg-white/10 transition-colors"
-              >
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="p-3 rounded-full bg-white/5 hover:bg-white/10 transition-colors"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="p-3 rounded-full bg-white/5 hover:bg-white/10 transition-colors"
-              >
-                <Github className="w-5 h-5" />
-              </a>
-            </div>
-            <p className="text-zinc-500 max-w-sm text-right">
-              San Francisco, CA <br />
-              100 Smith Street, Suite 500
-            </p>
-          </div>
-        </div>
+      {/* Separator */}
+      <div className="max-w-5xl mx-auto px-4 mt-8">
+        <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+      </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-white/10 pt-12">
-          <div>
-            <h4 className="font-bold mb-4 text-zinc-300">Product</h4>
-            <ul className="space-y-2 text-zinc-500">
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Features
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Integrations
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Pricing
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-bold mb-4 text-zinc-300">Company</h4>
-            <ul className="space-y-2 text-zinc-500">
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Blog
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-bold mb-4 text-zinc-300">Resources</h4>
-            <ul className="space-y-2 text-zinc-500">
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Docs
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  API
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Community
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-bold mb-4 text-zinc-300">Legal</h4>
-            <ul className="space-y-2 text-zinc-500">
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Privacy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Terms
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="border-t border-white/10 pt-8 mt-12 text-center">
-          <p className="text-zinc-500 text-sm">
+      {/* Bottom Credits */}
+      <div className="max-w-5xl mx-auto px-4 mt-8 flex flex-col md:flex-row justify-between items-center text-xs text-zinc-600 gap-4">
+        <div>&copy; 2025 SaaSify Inc.</div>
+        <div className="flex items-center gap-2">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]"></span>
+          <span>
             Developed by{' '}
             <a
               href="https://gokulkannanganesamoorthy.vercel.app"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white hover:underline hover:text-blue-400 transition-colors"
+              className="text-zinc-400 hover:text-white transition-colors hover:underline decoration-zinc-700 underline-offset-4"
             >
               Gokul Kannan Ganesamoorthy
             </a>
-          </p>
+          </span>
         </div>
       </div>
     </footer>
