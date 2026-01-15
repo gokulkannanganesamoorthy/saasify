@@ -1,4 +1,4 @@
-import { SpotlightCard } from '../ui/SpotlightCard';
+import ElectricBorder from '../ui/ElectricBorder';
 import { Zap, Shield, BarChart3, Globe, Layers, Cpu } from 'lucide-react';
 
 const features = [
@@ -51,8 +51,8 @@ export function BentoGrid() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
           {features.map((feature, i) => (
-            <SpotlightCard key={i} className={feature.className}>
-              <div className="p-8 h-full flex flex-col justify-between relative z-20">
+            <ElectricBorder key={i} className={feature.className}>
+              <div className="h-full bg-zinc-900/50 backdrop-blur-sm rounded-[24px] border border-white/5 p-8 flex flex-col justify-between relative z-20 overflow-hidden">
                 <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mb-4 backdrop-blur-sm border border-white/10">
                   {feature.icon}
                 </div>
@@ -64,16 +64,20 @@ export function BentoGrid() {
                     {feature.description}
                   </p>
                 </div>
+                {/* Optional: Add background patterns or gradients specifically for some cards */}
+                <div className="absolute inset-0 z-0 bg-dot-white opacity-20 pointer-events-none" />
               </div>
-
-              {/* Optional: Add background patterns or gradients specifically for some cards */}
-              <div className="absolute inset-0 z-0 bg-dot-white opacity-20" />
-            </SpotlightCard>
+            </ElectricBorder>
           ))}
 
           {/* CTA Card */}
-          <SpotlightCard className="col-span-1 md:col-span-3 bg-gradient-to-r from-zinc-900 to-black">
-            <div className="p-8 h-full flex flex-col md:flex-row items-center justify-between gap-8 z-20 relative">
+          {/* CTA Card */}
+          <ElectricBorder
+            className="col-span-1 md:col-span-3"
+            color="#ffffff"
+            speed={0.5}
+          >
+            <div className="h-full bg-gradient-to-r from-zinc-900 to-black rounded-[24px] border border-white/5 p-8 flex flex-col md:flex-row items-center justify-between gap-8 z-20 relative overflow-hidden">
               <div className="text-left">
                 <h3 className="text-2xl font-bold text-white mb-2">
                   Ready to scale?
@@ -85,9 +89,9 @@ export function BentoGrid() {
               <button className="bg-white text-black px-6 py-3 rounded-full font-bold hover:bg-zinc-200 transition-colors">
                 Get Started Now
               </button>
-              <div className="absolute inset-0 z-0 bg-grid-small-white opacity-20" />
+              <div className="absolute inset-0 z-0 bg-grid-small-white opacity-20 pointer-events-none" />
             </div>
-          </SpotlightCard>
+          </ElectricBorder>
         </div>
       </div>
     </section>

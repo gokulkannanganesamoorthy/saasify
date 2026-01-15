@@ -33,58 +33,50 @@ export function Navbar({ onOpenModal }) {
           duration: 0.2,
         }}
         className={cn(
-          'sticky top-4 inset-x-0 mx-auto z-50 border border-white/[0.2] rounded-full bg-black/50 backdrop-blur-md shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] items-center', // Removed flex, justify-between, space-x-4 from here
+          'sticky top-4 inset-x-0 mx-auto z-50 border border-white/[0.2] rounded-full bg-black/50 backdrop-blur-md shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] items-center flex justify-between space-x-4',
           'w-[95%] md:max-w-2xl', // Responsive width
-          'pl-4 pr-2 py-2 md:pl-8' // Kept padding for overall nav
+          'pl-4 pr-2 py-2 md:pl-8'
         )}
       >
-        {/* Mobile Grid Layout */}
-        <div className="md:hidden grid grid-cols-3 w-full items-center">
-          {/* Left: Hamburger */}
-          <div className="justify-self-start">
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-white p-2 hover:bg-white/10 rounded-full transition-colors"
-            >
-              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
-          </div>
+        <div className="flex items-center md:space-x-4">
+          {/* Mobile Menu Toggle - Now on Left */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden text-white p-2 mr-2"
+          >
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
 
-          {/* Center: Logo */}
-          <div className="justify-self-center">
-            <span className="font-bold text-white text-lg">SaaSify</span>
-          </div>
+          {/* Logo - Centered on Mobile, Left on Desktop */}
+          <span
+            className={cn(
+              'font-bold text-white transition-all',
+              'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:static md:translate-x-0 md:translate-y-0 md:pr-4'
+            )}
+          >
+            SaaSify
+          </span>
 
-          {/* Right: CTA */}
-          <div className="justify-self-end">
-            <Button
-              onClick={onOpenModal}
-              className="rounded-full bg-white text-black px-4 text-xs font-bold hover:bg-zinc-200 h-8"
-            >
-              Book Demo
-            </Button>
-          </div>
-        </div>
-
-        {/* Desktop Flex Layout (Hidden on Mobile) */}
-        <div className="hidden md:flex w-full items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <span className="font-bold text-white pr-4">SaaSify</span>
+          {/* Desktop Links */}
+          <div className="hidden md:flex items-center space-x-4">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 className={cn(
-                  'relative dark:text-neutral-50 items-center flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500 transition-colors'
+                  'relative dark:text-neutral-50 items-center flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500'
                 )}
               >
-                <span className="block text-sm font-medium">{link.name}</span>
+                <span className="block text-sm">{link.name}</span>
               </a>
             ))}
           </div>
+        </div>
+
+        <div className="flex items-center gap-2">
           <Button
             onClick={onOpenModal}
-            className="rounded-full bg-white text-black px-6 text-sm font-medium hover:bg-zinc-200"
+            className="rounded-full bg-white text-black px-4 md:px-6 text-sm font-medium hover:bg-zinc-200 h-8 md:h-10"
           >
             Book Demo
           </Button>

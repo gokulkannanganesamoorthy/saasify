@@ -27,7 +27,7 @@ A high-performance, visually stunning SaaS landing page template built with the 
 1.  **Clone the repository**
 
     ```bash
-    git clone https://github.com/yourusername/saas-landing-page.git
+    git clone https://github.com/gokulkannanganesamoorthy/saasify.git
     cd saas-landing-page
     ```
 
